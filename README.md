@@ -1,1 +1,1 @@
-# VI_SDE
+# VI_SDE based on (time-independent) OU processes
