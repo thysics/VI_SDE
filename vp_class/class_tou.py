@@ -97,7 +97,7 @@ def tou_gradient(t, x, params):
         """
         t0 = t - t[:, 0].reshape(-1, 1)
         dt = torch.diff(t)
-        m_t = alpha * ( (t0[:, :-1] + 1) ** beta  - 1) + m0                 - (alpha * ((t0[:, 1:] + 1) ** beta - 1 ) + m0) * torch.exp(r * dt)
+        m_t = alpha * ( (t0[:, :-1] + 1) ** beta  - 1) + m0 - (alpha * ((t0[:, 1:] + 1) ** beta - 1 ) + m0) * torch.exp(r * dt)
 
         return (x - m_t) * torch.exp(-r * dt)
     
@@ -113,7 +113,7 @@ def tou_gradient(t, x, params):
     alpha, beta, m0, r, sigma = params_
     
     mu = mean(x[:, :-1], t, alpha, beta, m0, r)
-    var = std(t, r, sigma)
+    var = std(t, r, sigma) + 1e-7 # To prevent the underflow
     
     
     LL = torch.sum(Normal(loc=mu, scale=var).log_prob(x[:, 1:]), axis=1)
