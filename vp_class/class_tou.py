@@ -51,7 +51,7 @@ class tOU:
                 t0: we always start our process from t = 0
             """
 
-            b_t = alpha * ( (t0[:,0].reshape(-1, 1) + 1) ** beta  - 1) + m0                      - (alpha  * ((t0[:, 1].reshape(-1, 1) + 1) ** beta - 1) + m0 ) * torch.exp(r * dt.reshape(-1, 1))
+            b_t = alpha * ( (t0[:,0].reshape(-1, 1) + 1) ** beta  - 1) + m0 - (alpha  * ((t0[:, 1].reshape(-1, 1) + 1) ** beta - 1) + m0 ) * torch.exp(r * dt.reshape(-1, 1))
 
             return (x.reshape(-1, 1) - b_t) * torch.exp(-r * dt.reshape(-1, 1))
 
@@ -113,7 +113,7 @@ def tou_gradient(t, x, params):
     alpha, beta, m0, r, sigma = params_
     
     mu = mean(x[:, :-1], t, alpha, beta, m0, r)
-    var = std(t, r, sigma) + 1e-7 # To prevent the underflow
+    var = std(t, r, sigma) + 1e-7 # To prevent the underflow (some of the value becomes 0 due to lack of precision
     
     
     LL = torch.sum(Normal(loc=mu, scale=var).log_prob(x[:, 1:]), axis=1)
