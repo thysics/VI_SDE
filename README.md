@@ -14,5 +14,5 @@ Here is a list of codes:
   4. Demonstrations of Variational Inference on two examples including time-homogeneous OU process and double-well system SDE.
   
     a. Time-homogeneous OU process: EX02_VI
-    b. double-well system SDE: EX03_VI (Note that there are two versions with time-inhomogeneous OU process; one with a linear mean function 
-    and the other with a non-linear one.
+    b. double-well system SDE: EX03_VI (Note that there are two versions with time-inhomogeneous OU process; 
+    one with a linear mean function and the other with a non-linear one.
