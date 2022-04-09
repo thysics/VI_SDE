@@ -15,4 +15,4 @@ Here is a list of codes:
   
     a. Time-homogeneous OU process: EX02_VI
     b. double-well system SDE: EX03_VI (Note that there are two versions with time-inhomogeneous OU process; 
-    one with a linear mean function and the other with a non-linear one.
+       one with a linear mean function (EX03_VI-TOU-L) and the other with a non-linear one (EX03_VI-TOU-NL).
