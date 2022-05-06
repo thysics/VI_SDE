@@ -110,7 +110,7 @@ def tou_gradient(t, x, params):
 
     
     params_ = Variable(params, requires_grad=True)
-    alpha, beta, m0, r, sigma = params_
+    alpha, beta, r, m0, sigma = params_
     
     mu = mean(x[:, :-1], t, alpha, beta, m0, r)
     var = std(t, r, sigma) + 1e-7 # To prevent the underflow (some of the value becomes 0 due to lack of precision
@@ -121,6 +121,6 @@ def tou_gradient(t, x, params):
 
 
     return {'alpha':params_.grad[0].clone().detach(), 'beta':params_.grad[1].clone().detach(), 
-            'm0':params_.grad[2].clone().detach(), 'r':params_.grad[3].clone().detach(), 
+            'm0':params_.grad[3].clone().detach(), 'r':params_.grad[2].clone().detach(), 
             'LL':LL.clone().detach().data}
 
