@@ -16,7 +16,8 @@ class tOU:
             t0, t1 = torch.tensor(t1)
             a, b, c, d, r, sigma = torch.tensor.shape (D, 1)
         """
-        assert a.shape == b.shape == c.shape == d.shape == r.shape == sigma.shape, "parameters must have the same dimension"
+
+        assert a.shape == b.shape == c.shape == r.shape == sigma.shape, "parameters must have the same dimension"
         assert a.shape[1] == 1, "parameter must have a shape D*1"
         assert t0.shape == t1.shape, "t0, t1 must have the same dimension"
         assert all(sigma > 0), "variance must be positive"
